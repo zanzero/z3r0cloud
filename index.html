@@ -1,26 +1,110 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      #under-construction {
-        text-align: center;
-        font-family: Arial, sans-serif;
-        margin-top: 50px;
-      }
-      h1 {
-        font-size: 50px;
-        margin-bottom: 0;
-      }
-      p {
-        font-size: 20px;
-        margin-top: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="under-construction">
-      <h1>Website Under Construction</h1>
-      <p>We apologize for the inconvenience. Our website is currently undergoing scheduled maintenance. Please check back later.</p>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Cyberpunk Neon Synth v2.0 ⚡</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="synth-container">
+        <header>
+            <h1>⚡ CYBERPUNK NEON SYNTH</h1>
+            <div class="status-glow">SYSTEM: ACTIVE</div>
+        </header>
+        
+        <div class="top-panel">
+            <div class="panel-box visualizer-box">
+                <h3>AUDIO VISUALIZER</h3>
+                <canvas id="visualizer"></canvas>
+            </div>
+            
+            <div class="panel-box controls-box">
+                <h3>EFFECTS & CONFIG</h3>
+                <div class="control-grid">
+                    
+                    <div class="control-item">
+                        <label>WAVEFORM / SOUND PATCH</label>
+                        <select id="waveform">
+                            <optgroup label="── STANDARD WAVEFORMS ──">
+                                <option value="sawtooth" selected>🤖 Sawtooth (EDM Lead)</option>
+                                <option value="square">👾 Square (8-Bit Retro)</option>
+                                <option value="sine">🔮 Sine (Pure Ambient)</option>
+                                <option value="triangle">📐 Triangle (Soft Flute)</option>
+                            </optgroup>
+                            <optgroup label="── SPECIAL FX & NOISE ──">
+                                <option value="white-noise">💨 White Noise (Static/Wind)</option>
+                                <option value="pink-noise">🌊 Pink Noise (Deep Ocean)</option>
+                            </optgroup>
+                            <optgroup label="── CYBER PUNKY POWER (DUAL) ──">
+                                <option value="super-saw">🔥 Super-Saw (Hyped Trance)</option>
+                                <option value="fat-square">🛸 Fat Detuned Square (Sci-Fi Bass)</option>
+                                <option value="chime">🔔 Space Chime (Chime + Sine)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    
+                    <div class="control-item">
+                        <label>VOLUME</label>
+                        <input type="range" id="volume" min="0" max="0.4" step="0.01" value="0.2">
+                    </div>
+
+                    <div class="control-item toggle-item">
+                        <label>ECHO / DELAY</label>
+                        <label class="switch">
+                            <input type="checkbox" id="delay-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="keyboard">
+    <div class="key white" data-note="C4" data-key="A"><span>C4</span><kbd>A</kbd></div>
+    <div class="key black" data-note="C#4" data-key="W"><kbd>W</kbd></div>
+    <div class="key white" data-note="D4" data-key="S"><span>D4</span><kbd>S</kbd></div>
+    <div class="key black" data-note="D#4" data-key="E"><kbd>E</kbd></div>
+    <div class="key white" data-note="E4" data-key="D"><span>E4</span><kbd>D</kbd></div>
+    <div class="key white" data-note="F4" data-key="F"><span>F4</span><kbd>F</kbd></div>
+    <div class="key black" data-note="F#4" data-key="R"><kbd>R</kbd></div>
+    <div class="key white" data-note="G4" data-key="G"><span>G4</span><kbd>G</kbd></div>
+    <div class="key black" data-note="G#4" data-key="T"><kbd>T</kbd></div>
+    <div class="key white" data-note="A4" data-key="H"><span>A4</span><kbd>H</kbd></div>
+    <div class="key black" data-note="A#4" data-key="Y"><kbd>Y</kbd></div>
+    <div class="key white" data-note="B4" data-key="J"><span>B4</span><kbd>J</kbd></div>
+
+    <div class="key white" data-note="C5" data-key="K"><span>C5</span><kbd>K</kbd></div>
+    <div class="key black" data-note="C#5" data-key="I"><kbd>I</kbd></div>
+    <div class="key white" data-note="D5" data-key="L"><span>D5</span><kbd>L</kbd></div>
+    <div class="key black" data-note="D#5" data-key="O"><kbd>O</kbd></div>
+    <div class="key white" data-note="E5" data-key=";"><span>E5</span><kbd>;</kbd></div>
+    <div class="key white" data-note="F5" data-key="'"><span>F5</span><kbd>'</kbd></div>
+    <div class="key black" data-note="F#5" data-key="P"><kbd>P</kbd></div>
+    <div class="key white" data-note="G5" data-key="Z"><span>G5</span><kbd>Z</kbd></div>
+    <div class="key black" data-note="G#5" data-key="X"><kbd>X</kbd></div>
+    <div class="key white" data-note="A5" data-key="C"><span>A5</span><kbd>C</kbd></div>
+    <div class="key black" data-note="A#5" data-key="V"><kbd>V</kbd></div>
+    <div class="key white" data-note="B5" data-key="B"><span>B5</span><kbd>B</kbd></div>
+</div>
+
+<p class="instruction">💥 WHITE KEYS: [ A S D F G H J K L ; ' ENTER ] | BLACK KEYS: [ W E R T Y I O P ]</p>
+<div class="panel-box jukebox-box" style="margin-bottom: 1.5rem;">
+    <h3>🤖 CYBER AUTOMATION JUKEBOX</h3>
+    <div class="jukebox-controls" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px;">
+        <button class="btn-music" onclick="playSong('hbd')">🎸 In The End Piano</button>
+        <button class="btn-music" onclick="playSong('mo_lam')">🎹 Numb Synth</button>
+        <button class="btn-music" onclick="playSong('mario')">🕶️ Still D.R.E. Beat</button>
+        <button class="btn-music" onclick="playSong('bat')">🍁 The Next Episode</button>
+        <button class="btn-music" onclick="playSong('loy_krathong')">🎨 Somebody Used To Know</button>
+        <button class="btn-stop" id="btn-stop-music" onclick="stopSong()" style="display:none;">🔴 STOP</button>
     </div>
-  </body>
+</div>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
 </html>

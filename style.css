@@ -1,0 +1,268 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace; /* สไตล์ Sci-Fi Coding */
+}
+
+body {
+    background: #0a0a12;
+    background-image: radial-gradient(#1f153a 1px, transparent 1px), radial-gradient(#151a3a 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    color: #00ffcc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+.synth-container {
+    max-width: 1050px; /* ขยายความกว้างสูงสุดของกล่องเครื่องจาก 850px เป็น 1050px เพื่อให้มีพื้นที่ตัวโน้ตเพิ่มขึ้น */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #333652;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 1.6rem;
+    text-shadow: 0 0 10px #ff0077;
+    color: #fff;
+}
+
+.status-glow {
+    background: #00ffcc;
+    color: #000;
+    padding: 4px 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    box-shadow: 0 0 15px #00ffcc;
+    border-radius: 4px;
+    animation: blink 2s infinite;
+}
+
+/* แผงควบคุมด้านบน */
+.top-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 2rem;
+}
+
+.panel-box {
+    background: #121224;
+    border: 1px solid #333652;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.panel-box h3 {
+    font-size: 0.85rem;
+    color: #ff0077;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+/* Canvas ของ Visualizer */
+#visualizer {
+    width: 100%;
+    height: 110px;
+    background: #07070d;
+    border-radius: 6px;
+    border: 1px solid #1a1a3a;
+}
+
+.control-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.control-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.control-item label {
+    font-size: 0.75rem;
+    color: #8a8cb5;
+}
+
+select, input[type="range"] {
+    background: #1a1a30;
+    color: #00ffcc;
+    border: 1px solid #ff0077;
+    padding: 6px;
+    border-radius: 4px;
+    outline: none;
+}
+
+/* สวิตช์เปิด/ปิด (Toggle Switch) */
+.switch {
+    position: relative;
+    width: 45px;
+    height: 22px;
+}
+.switch input { display: none; }
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #333;
+    transition: .3s;
+    border-radius: 34px;
+    border: 1px solid #555;
+}
+.switch input:checked + .slider {
+    background-color: #ff0077;
+    box-shadow: 0 0 10px #ff0077;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px; width: 14px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+.switch input:checked + .slider:before {
+    transform: translateX(23px);
+}
+
+/* คีย์บอร์ดเปียโน */
+.keyboard {
+    display: flex;
+    position: relative;
+    background: #000;
+    padding: 15px 8px;
+    border-radius: 12px;
+    height: 240px;
+    border: 1px solid #333652;
+}
+
+.key {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.key.white {
+    height: 100%;
+    flex: 1;
+    background: #1a1a2e;
+    border: 1px solid #2d2d44;
+    border-radius: 0 0 6px 6px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 15px;
+    color: #8a8cb5;
+}
+
+.key.white.active {
+    background: #ff0077 !important;
+    color: #fff;
+    box-shadow: 0 0 25px #ff0077;
+    border-color: #ff0077;
+    transform: scaleY(0.98);
+}
+
+/* คีย์ดำ */
+.key.black {
+    height: 55%;
+    width: 6%;
+    background: #0d0d14;
+    border: 1px solid #ff0077;
+    border-radius: 0 0 4px 4px;
+    z-index: 2;
+    margin-left: -3%;
+    margin-right: -3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 10px;
+    color: #ff0077;
+}
+
+.key.black.active {
+    background: #00ffcc !important;
+    color: #000;
+    box-shadow: 0 0 25px #00ffcc;
+    border-color: #00ffcc;
+}
+
+kbd {
+    background: #252538;
+    border-radius: 3px;
+    padding: 1px 4px;
+    font-size: 0.65rem;
+    margin-top: 5px;
+    border: 1px solid #3d3d5c;
+}
+
+.instruction {
+    margin-top: 1.5rem;
+    color: #4f527d;
+    font-size: 0.75rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Responsive สำหรับมือถือ */
+@media (max-width: 700px) {
+    .top-panel {
+        grid-template-columns: 1fr; /* ยุบรวมเหลือแถวเดียวบนมือถือ */
+        gap: 15px;
+    }
+    .keyboard {
+        height: 180px;
+    }
+    kbd {
+        display: none;
+    }
+    h1 {
+        font-size: 1.2rem;
+    }
+}
+
+.btn-music, .btn-stop {
+    background: #1a1a30;
+    color: #00ffcc;
+    border: 1px solid #00ffcc;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+.btn-music:hover {
+    background: #00ffcc;
+    color: #000;
+    box-shadow: 0 0 10px #00ffcc;
+}
+.btn-stop {
+    border-color: #ff0077;
+    color: #ff0077;
+}
+.btn-stop:hover {
+    background: #ff0077;
+    color: #fff;
+    box-shadow: 0 0 10px #ff0077;
+}
